@@ -232,12 +232,12 @@ public class TestModeQuestionView extends JPanel implements ActionListener {
         else {
             // End session if no more questions
             // link to test result
-            JOptionPane.showMessageDialog(
-                    this,
-                    "You have completed the study mode!",
-                    "Done",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
+            //            JOptionPane.showMessageDialog(
+            //                    this,
+            //                    "You have completed the study mode!",
+            //                    "Done",
+            //                    JOptionPane.INFORMATION_MESSAGE
+            //            );
         }
     }
 

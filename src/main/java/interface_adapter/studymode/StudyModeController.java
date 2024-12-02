@@ -36,3 +36,4 @@ public class StudyModeController {
         studyModeInputBoundary.switchToModeSelectionView();
     }
 }
+

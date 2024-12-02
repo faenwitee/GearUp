@@ -48,27 +48,22 @@ public class StudyModeQuestionView extends JPanel implements ActionListener {
         //        this.questions = DatabaseRetriever.getQuestionsFromStart(0);
         //        this.moduleName = studyModeQuestionViewModel.getState().getModule();
         //        this.questions = new LinkedList<>();
-
-//        studyModeQuestionViewModel.addPropertyChangeListener(evt -> {
-//            if ("state".equals(evt.getPropertyName())) {
-//                this.moduleName = studyModeQuestionViewModel.getState().getModule();
-//
-//                System.out.println(this.moduleName);
-//                //                getModuleQuestion();
-//                try {
-//                    getModuleQuestion();
-//                }
-//                catch (SQLException ex) {
-//                    throw new RuntimeException(ex);
-//                }
-//            }
-//        });
-
-//        if ("Module 1".equals(moduleName)) {
-//            System.out.println("success");
-//        }
-
-
+        //        XXXXX
+        //        studyModeQuestionViewModel.addPropertyChangeListener(evt -> {
+        //            if ("state".equals(evt.getPropertyName())) {
+        //                this.moduleName = studyModeQuestionViewModel.getState().getModule();
+        //
+        //                System.out.println(this.moduleName);
+        //                //                getModuleQuestion();
+        //                try {
+        //                    getModuleQuestion();
+        //                }
+        //                catch (SQLException ex) {
+        //                    throw new RuntimeException(ex);
+        //                }
+        //            }
+        //        });
+        //        XXXXX
         //        final JLabel title = new JLabel("Study Mode Question");
         //        title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
