@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import javax.swing.*;
 
@@ -34,22 +35,39 @@ public class StudyModeQuestionView extends JPanel implements ActionListener {
     private final JButton option4;
     private final JButton nextButton;
 
-    private LinkedList<Question> questions;
+    private LinkedList<Question> questions = new LinkedList<>();
     private Question currentQuestion;
-    private final String moduleName;
+    private String moduleName;
+    private final int randomNum;
 
     public StudyModeQuestionView(StudyModeQuestionViewModel studyModeQuestionViewModel) throws SQLException {
         this.studyModeQuestionViewModel = studyModeQuestionViewModel;
+        final Random random = new Random();
+        this.randomNum = random.nextInt(6) + 1;
+        getModuleQuestion();
         //        this.questions = DatabaseRetriever.getQuestionsFromStart(0);
-        this.moduleName = studyModeQuestionViewModel.getState().getModule();
-        this.questions = getModuleQuestion();
+        //        this.moduleName = studyModeQuestionViewModel.getState().getModule();
+        //        this.questions = new LinkedList<>();
 
-        // TODO: get module name and then provide questions for corressponding module
+//        studyModeQuestionViewModel.addPropertyChangeListener(evt -> {
+//            if ("state".equals(evt.getPropertyName())) {
+//                this.moduleName = studyModeQuestionViewModel.getState().getModule();
+//
+//                System.out.println(this.moduleName);
+//                //                getModuleQuestion();
+//                try {
+//                    getModuleQuestion();
+//                }
+//                catch (SQLException ex) {
+//                    throw new RuntimeException(ex);
+//                }
+//            }
+//        });
 
-        //        final String moduleName = studyModeQuestionViewModel.getState().getModule();
-        //        if ("Module 1".equals(moduleName)) {
-        //            System.out.println("success");
-        //        }
+//        if ("Module 1".equals(moduleName)) {
+//            System.out.println("success");
+//        }
+
 
         //        final JLabel title = new JLabel("Study Mode Question");
         //        title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -84,7 +102,7 @@ public class StudyModeQuestionView extends JPanel implements ActionListener {
         nextButton.setBounds(300, 400, 80, 30);
         buttons.add(nextButton);
 
-        final JLabel usernameInfo = new JLabel("Currently logged in: ");
+        final JLabel usernameInfo = new JLabel("Currently logged in111: ");
         usernameInfo.setAlignmentX(Component.CENTER_ALIGNMENT);
         username = new JLabel();
         username.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -209,31 +227,79 @@ public class StudyModeQuestionView extends JPanel implements ActionListener {
         this.add(username);
     }
 
-    private LinkedList<Question> getModuleQuestion() throws SQLException {
-        if ("Module 1".equals(moduleName)) {
-            return DatabaseRetriever.getQuestionsFromStart(0);
+//    private void getModuleQuestion() throws SQLException {
+//        if ("Module 1".equals(moduleName)) {
+////            return DatabaseRetriever.getQuestionsFromStart(0);
+//            this.questions = DatabaseRetriever.getQuestionsFromStart(0);
+//
+//        }
+//        else if ("Module 2".equals(moduleName)) {
+////            return DatabaseRetriever.getQuestionsFromStart(20);
+//            this.questions = DatabaseRetriever.getQuestionsFromStart(20);
+//
+//        }
+//        else if ("Module 3".equals(moduleName)) {
+////            return DatabaseRetriever.getQuestionsFromStart(40);
+//            this.questions = DatabaseRetriever.getQuestionsFromStart(40);
+//
+//        }
+//        else if ("Module 4".equals(moduleName)) {
+////            return DatabaseRetriever.getQuestionsFromStart(60);
+//            this.questions = DatabaseRetriever.getQuestionsFromStart(60);
+//
+//        }
+//        else if ("Module 5".equals(moduleName)) {
+////            return DatabaseRetriever.getQuestionsFromStart(80);
+//            this.questions = DatabaseRetriever.getQuestionsFromStart(80);
+//        }
+//        else {
+////            return DatabaseRetriever.getQuestionsInRange(100,123);
+//            this.questions = DatabaseRetriever.getQuestionsInRange(100,123);
+//
+//        }
+//
+//    }
+
+    private void getModuleQuestion() throws SQLException {
+        if (this.randomNum == 1) {
+//            return DatabaseRetriever.getQuestionsFromStart(0);
+            this.questions = DatabaseRetriever.getQuestionsFromStart(0);
+
         }
-        else if ("Module 2".equals(moduleName)) {
-            return DatabaseRetriever.getQuestionsFromStart(20);
+        else if (this.randomNum == 2) {
+//            return DatabaseRetriever.getQuestionsFromStart(20);
+            this.questions = DatabaseRetriever.getQuestionsFromStart(20);
+
         }
-        else if ("Module 3".equals(moduleName)) {
-            return DatabaseRetriever.getQuestionsFromStart(40);
+        else if (this.randomNum == 3) {
+//            return DatabaseRetriever.getQuestionsFromStart(40);
+            this.questions = DatabaseRetriever.getQuestionsFromStart(40);
+
         }
-        else if ("Module 4".equals(moduleName)) {
-            return DatabaseRetriever.getQuestionsFromStart(60);
+        else if (this.randomNum == 4) {
+//            return DatabaseRetriever.getQuestionsFromStart(60);
+            this.questions = DatabaseRetriever.getQuestionsFromStart(60);
+
         }
-        else if ("Module 5".equals(moduleName)) {
-            return DatabaseRetriever.getQuestionsFromStart(80);
+        else if (this.randomNum == 5) {
+//            return DatabaseRetriever.getQuestionsFromStart(80);
+            this.questions = DatabaseRetriever.getQuestionsFromStart(80);
         }
         else {
-            return DatabaseRetriever.getQuestionsInRange(100,123);
+//            return DatabaseRetriever.getQuestionsInRange(100,123);
+            this.questions = DatabaseRetriever.getQuestionsInRange(100,123);
+
         }
 
     }
 
     private void loadNextQuestion() {
-        if (!questions.isEmpty()) {
-            currentQuestion = questions.poll();
+        if (this.questions == null || this.questions.isEmpty()) {
+            System.out.print("no questions available yet.");
+        }
+
+        else if (!this.questions.isEmpty()) {
+            currentQuestion = this.questions.poll();
             studymodequestion.setText(currentQuestion.getQuestionText());
 
             final List<Answer> answers = currentQuestion.getAnswers();
@@ -260,7 +326,7 @@ public class StudyModeQuestionView extends JPanel implements ActionListener {
                     "Done",
                     JOptionPane.INFORMATION_MESSAGE
             );
-            studyModeQuestionController.switchToStudyModeView();
+            //            studyModeQuestionController.switchToStudyModeView();
 
         }
     }

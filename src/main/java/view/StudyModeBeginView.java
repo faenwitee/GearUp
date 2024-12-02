@@ -28,18 +28,19 @@ public class StudyModeBeginView extends JPanel {
     private final JPanel buttonWrapper;
     private final JButton begin;
     private final JLabel username;
+    private String moduleName;
 
     public StudyModeBeginView(StudyModeBeginViewModel studyModeBeginViewModel) {
 
         this.studyModeBeginViewModel = studyModeBeginViewModel;
         this.setBackground(Color.decode("#11212D"));
 
-        final String moduleName = studyModeBeginViewModel.getState().getModule();
-
         final JLabel title = new JLabel("Study Mode\n");
         title.setFont(new Font("Times New Roman", Font.ITALIC, 25));
         title.setForeground(Color.decode("#4A5C6A"));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        moduleName = studyModeBeginViewModel.getState().getModule();
 
         final JLabel beginText = new JLabel("<html>Welcome to study "
                 + moduleName + ". The questions you get wrong will be "
@@ -49,14 +50,16 @@ public class StudyModeBeginView extends JPanel {
 
         studyModeBeginViewModel.addPropertyChangeListener(evt -> {
             if ("state".equals(evt.getPropertyName())) {
-                final String newModuleName = studyModeBeginViewModel.getState().getModule();
+                moduleName = studyModeBeginViewModel.getState().getModule();
                 beginText.setText("<html><div style='text-align: center; font-family: \"Times New Roman\"; margin: 10px auto;'>"
                         + "<p style='color: #C1E8FF;'>Welcome to study <span style='color: #5483B3; "
-                        + "font-style: italic;'>" + newModuleName + "</span>.</p>"
+                        + "font-style: italic;'>" + moduleName + "</span>.</p>"
                         + "<p style='color: #C1E8FF;'>The questions you get wrong</span> "
                         + "will be redisplayed until you answer all of them correctly.</p></div></html>");
             }
         });
+
+        System.out.println("hi" + moduleName);
 
         final JPanel buttons = new JPanel();
         buttons.setBackground(Color.decode("#11212D"));
@@ -99,6 +102,7 @@ public class StudyModeBeginView extends JPanel {
                             studyModeBeginState.setModule(moduleName);
                             studyModeBeginViewModel.setState(studyModeBeginState);
                             studyModeBeginViewModel.firePropertyChanged();
+                            System.out.println(studyModeBeginState.getModule());
                             studyModeBeginController.execute(studyModeBeginState.getModule());
                         }
                         studyModeBeginController.switchToStudyModeQuestionView();

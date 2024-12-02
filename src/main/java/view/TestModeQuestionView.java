@@ -36,10 +36,12 @@ public class TestModeQuestionView extends JPanel implements ActionListener {
     private LinkedList<Question> questions;
     private Question currentQuestion;
     private ArrayList<Question> wrongquestions;
+    private int correctquestion;
 
     public TestModeQuestionView(TestModeQuestionViewModel testModeQuestionViewModel) {
         this.testModeQuestionViewModel = testModeQuestionViewModel;
         this.questions = DatabaseRetriever.getQuestionsRandom();
+        this.correctquestion = 0;
 
         final JLabel title = new JLabel("Test Mode Question");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -90,6 +92,7 @@ public class TestModeQuestionView extends JPanel implements ActionListener {
                             option1.revalidate();
                             option1.setOpaque(true);
                             option1.repaint();
+                            correctquestion++;
 
                         }
                         else {
@@ -115,6 +118,7 @@ public class TestModeQuestionView extends JPanel implements ActionListener {
                             option2.revalidate();
                             option2.setOpaque(true);
                             option2.repaint();
+                            correctquestion++;
 
                         }
                         else {
@@ -140,6 +144,7 @@ public class TestModeQuestionView extends JPanel implements ActionListener {
                             option3.revalidate();
                             option3.setOpaque(true);
                             option3.repaint();
+                            correctquestion++;
 
                         }
                         else {
@@ -165,6 +170,7 @@ public class TestModeQuestionView extends JPanel implements ActionListener {
                             option4.revalidate();
                             option4.setOpaque(true);
                             option4.repaint();
+                            correctquestion++;
 
                         }
                         else {
@@ -242,7 +248,6 @@ public class TestModeQuestionView extends JPanel implements ActionListener {
     public void setLogoutController(LogoutController logoutController) {
         this.logoutController = logoutController;
     }
-
 
     public void setTestModeQuestionController(TestModeQuestionController testModeQuestionController) {
         this.testModeQuestionController = testModeQuestionController;

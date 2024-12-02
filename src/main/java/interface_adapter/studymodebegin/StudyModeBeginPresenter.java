@@ -30,10 +30,9 @@ public class StudyModeBeginPresenter implements StudyModeBeginOutputBoundary {
     @Override
     public void prepareSuccessView(StudyModeBeginOutputData outputData) {
         final StudyModeQuestionState studyModeQuestionState = studyModeQuestionViewModel.getState();
-        studyModeQuestionState.setSelectedOption(outputData.getModule());
+        studyModeQuestionState.setModule(outputData.getModule());
         this.studyModeQuestionViewModel.setState(studyModeQuestionState);
         this.studyModeQuestionViewModel.firePropertyChanged();
-
         this.viewManagerModel.setState(studyModeQuestionViewModel.getViewName());
         this.viewManagerModel.firePropertyChanged();
     }
