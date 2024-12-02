@@ -42,5 +42,10 @@ public class StudyModeQuestionPresenter implements StudyModeQuestionOutputBounda
         viewManagerModel.setState("test result");
         viewManagerModel.firePropertyChanged();
     }
-}
 
+    @Override
+    public void switchToStudyMode() {
+        viewManagerModel.setState("study mode");
+        viewManagerModel.firePropertyChanged();
+    }
+}

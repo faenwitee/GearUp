@@ -26,4 +26,5 @@ public interface StudyModeQuestionOutputBoundary {
      */
     void switchToTestResultView();
 
+    void switchToStudyMode();
 }

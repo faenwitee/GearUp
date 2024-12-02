@@ -35,4 +35,12 @@ public class StudyModeQuestionInteractor implements StudyModeQuestionInputBounda
     public void switchToTestResultView() {
         presenter.switchToTestResultView();
     }
+
+    /**
+     * Switch back to the StudyMode View.
+     */
+    @Override
+    public void switchToStudyModeView() {
+        presenter.switchToStudyMode();
     }
+}
