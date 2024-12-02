@@ -83,11 +83,11 @@ public class TestresultView extends JPanel implements ActionListener, PropertyCh
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // no implementation needed.
+        // no implementation needed for this view.
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        // no implementation needed.
+        // no implementation needed for this view.
     }
 }
