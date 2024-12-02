@@ -52,7 +52,6 @@ public class StudyModeQuestionView extends JPanel implements ActionListener {
         //        studyModeQuestionViewModel.addPropertyChangeListener(evt -> {
         //            if ("state".equals(evt.getPropertyName())) {
         //                this.moduleName = studyModeQuestionViewModel.getState().getModule();
-        //
         //                System.out.println(this.moduleName);
         //                //                getModuleQuestion();
         //                try {

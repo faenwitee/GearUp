@@ -94,8 +94,7 @@ public class TestModeQuestionView extends JPanel implements ActionListener {
                             option1.repaint();
                             correctquestion++;
 
-                        }
-                        else {
+                        } else {
                             option1.setBackground(Color.RED);
                             option1.revalidate();
                             option1.setOpaque(true);
@@ -120,8 +119,7 @@ public class TestModeQuestionView extends JPanel implements ActionListener {
                             option2.repaint();
                             correctquestion++;
 
-                        }
-                        else {
+                        } else {
                             option2.setBackground(Color.RED);
                             option2.revalidate();
                             option2.setOpaque(true);
@@ -146,8 +144,7 @@ public class TestModeQuestionView extends JPanel implements ActionListener {
                             option3.repaint();
                             correctquestion++;
 
-                        }
-                        else {
+                        } else {
                             option3.setBackground(Color.RED);
                             option3.revalidate();
                             option3.setOpaque(true);
@@ -172,8 +169,7 @@ public class TestModeQuestionView extends JPanel implements ActionListener {
                             option4.repaint();
                             correctquestion++;
 
-                        }
-                        else {
+                        } else {
                             option4.setBackground(Color.RED);
                             option4.revalidate();
                             option4.setOpaque(true);
@@ -222,14 +218,12 @@ public class TestModeQuestionView extends JPanel implements ActionListener {
                     options[i].setEnabled(true);
                     // Reset button color
                     options[i].setBackground(null);
-                }
-                else {
+                } else {
                     options[i].setText("N/A");
                     options[i].setEnabled(false);
                 }
             }
-        }
-        else {
+        } else {
             // End session if no more questions
             // link to test result
             //            JOptionPane.showMessageDialog(
@@ -257,5 +251,4 @@ public class TestModeQuestionView extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click " + evt.getActionCommand());
     }
-
 }

@@ -144,4 +144,3 @@ public class StudyModeBeginView extends JPanel {
     }
 
 }
-

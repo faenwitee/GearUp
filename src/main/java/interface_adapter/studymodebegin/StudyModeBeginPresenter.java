@@ -54,4 +54,3 @@ public class StudyModeBeginPresenter implements StudyModeBeginOutputBoundary {
         viewManagerModel.firePropertyChanged();
     }
 }
-
