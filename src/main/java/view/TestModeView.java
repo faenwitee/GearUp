@@ -3,7 +3,6 @@ package view;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
-import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -82,20 +81,18 @@ public class TestModeView extends JPanel {
 
     private JPanel createButtonsPanel() {
         final JPanel buttons = new JPanel();
-        final int beginButtonFontSize = 20;
         buttons.setBackground(Color.decode("#11212D"));
-        final int buttonsRow = 1;
-        final int buttonsCols = 1;
-        final int buttonsHgap = 10;
-        final int buttonsVgap = 10;
-        buttons.setLayout(new GridLayout(buttonsRow, buttonsCols, buttonsHgap, buttonsVgap));
-
-        begin = createButton("Begin", "Lucida Handwriting", beginButtonFontSize, "#9BA8AB", "#253745");
+        final String fancyFont = "Lucida Handwriting";
+        final int fontSize = 20;
+        begin = new JButton("Begin");
+        begin.setFont(new Font(fancyFont, Font.ITALIC, fontSize));
+        begin.setForeground(Color.decode("#9BA8AB"));
+        begin.setBackground(Color.decode("#253745"));
         buttons.add(begin);
 
         backToModeSelection = new JButton("Back To Mode Selection");
         backToModeSelection.setAlignmentX(Component.CENTER_ALIGNMENT);
-        styleButton(backToModeSelection, "#9BA8AB", "#253745");
+        styleButton(backToModeSelection, "#253745", "#9BA8AB");
 
         return buttons;
     }
@@ -108,14 +105,6 @@ public class TestModeView extends JPanel {
         buttonWrapper.setBorder(BorderFactory.createEmptyBorder(wrapperMargin, 0, wrapperMargin, 0));
         buttonWrapper.add(backToModeSelection);
         return buttonWrapper;
-    }
-
-    private JButton createButton(String text, String font, int fontSize, String foreColor, String backColor) {
-        final JButton button = new JButton(text);
-        button.setFont(new Font(font, Font.ITALIC, fontSize));
-        button.setForeground(Color.decode(foreColor));
-        button.setBackground(Color.decode(backColor));
-        return button;
     }
 
     private void styleButton(JButton button, String foreColor, String backColor) {
