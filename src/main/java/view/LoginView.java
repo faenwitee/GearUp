@@ -38,8 +38,8 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
     private final JPasswordField passwordInputField = new JPasswordField(15);
     private final JLabel passwordErrorField = new JLabel();
 
-    private final JButton logIn;
-    private final JButton toSignUp;
+    private JButton logIn;
+    private JButton toSignUp;
     private LoginController loginController;
     private final Color backgroundC = Color.decode("#99acaf");
 
@@ -47,49 +47,75 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
         this.loginViewModel = loginViewModel;
         this.loginViewModel.addPropertyChangeListener(this);
 
-        // Set background color for the entire panel
         this.setBackground(backgroundC);
 
-        // Title panel
+        final JPanel titlePanel = createTitlePanel();
+        final LabelTextPanel usernameInfo = createInputPanel("Username", usernameInputField);
+        final LabelTextPanel passwordInfo = createInputPanel("Password", passwordInputField);
+
+        final JPanel buttons = createButtonsPanel();
+
+        // Add action listeners for buttons
+        addActionListeners();
+
+        // Add document listeners for input fields
+        addDocumentListeners();
+
+        // Layout setup
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.add(titlePanel);
+        this.add(usernameInfo);
+        this.add(passwordInfo);
+        this.add(usernameErrorField);
+        this.add(buttons);
+    }
+
+    private JPanel createTitlePanel() {
         final JPanel titlePanel = new JPanel();
         titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.X_AXIS));
         titlePanel.setBackground(backgroundC);
 
         final JLabel title = new JLabel("Login");
-        final int fontSize = 32;
-        title.setFont(new Font("Times New Roman", Font.BOLD, fontSize));
+        final int titleSize = 32;
+        title.setFont(new Font("Times New Roman", Font.BOLD, titleSize));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // Load and resize the image
-        final ImageIcon originalIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(
-                "images/Signup_icon.jpg")));
+        final ImageIcon originalIcon = new ImageIcon(Objects.requireNonNull(
+                getClass().getClassLoader().getResource("images/Signup_icon.jpg")));
         final Image scaledImage = originalIcon.getImage().getScaledInstance(90, -1, Image.SCALE_SMOOTH);
         final ImageIcon resizedIcon = new ImageIcon(scaledImage);
         final JLabel imageLabel = new JLabel(resizedIcon);
 
         titlePanel.add(title);
         titlePanel.add(imageLabel);
+        return titlePanel;
+    }
 
-        // Input fields
-        final LabelTextPanel usernameInfo = new LabelTextPanel(new JLabel("Username"), usernameInputField);
-        final LabelTextPanel passwordInfo = new LabelTextPanel(new JLabel("Password"), passwordInputField);
+    private LabelTextPanel createInputPanel(String label, JTextField textField) {
+        return new LabelTextPanel(new JLabel(label), textField);
+    }
 
-        // Buttons panel
+    private JPanel createButtonsPanel() {
         final JPanel buttons = new JPanel();
         buttons.setBackground(backgroundC);
-        toSignUp = new JButton("Go to Sign Up");
-        buttons.add(toSignUp);
-        logIn = new JButton("Log In");
-        buttons.add(logIn);
 
-        // Add action listeners for buttons
+        toSignUp = new JButton("Go to Sign Up");
+        logIn = new JButton("Log In");
+
+        buttons.add(toSignUp);
+        buttons.add(logIn);
+        return buttons;
+    }
+
+    private void addActionListeners() {
         toSignUp.addActionListener(evt -> loginController.switchToSignUpView());
         logIn.addActionListener(evt -> {
             final LoginState currentState = loginViewModel.getState();
             loginController.execute(currentState.getUsername(), currentState.getPassword());
         });
+    }
 
-        // Add document listeners for input fields
+    private void addDocumentListeners() {
         addDocumentListener(usernameInputField, text -> {
             final LoginState currentState = loginViewModel.getState();
             currentState.setUsername(text);
@@ -101,14 +127,6 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
             currentState.setPassword(text);
             loginViewModel.setState(currentState);
         });
-
-        // Layout setup
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.add(titlePanel);
-        this.add(usernameInfo);
-        this.add(passwordInfo);
-        this.add(usernameErrorField);
-        this.add(buttons);
     }
 
     private void addDocumentListener(JTextField textField, InputUpdateListener listener) {
@@ -155,6 +173,9 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
         this.loginController = loginController;
     }
 
+    /**
+     * Method to handle updates to the input text.
+     */
     @FunctionalInterface
     private interface InputUpdateListener {
         void onUpdate(String text);
