@@ -34,19 +34,19 @@ By offering both focused learning and realistic test simulations, this program p
 
 ## Features
 * **Personalized Account (API)**: Personalized account for each use with valid email address. Invalid Email will be rejected as shown below. 
-![Invalid Email](images/final_invalidEmail.png)
+* ![Invalid Email](images/final_invalidEmail.png)
 * **Flexible Study Methods**: Provide Study Mode and Test Mode for the user to flexibly choose their study plan.
-![Mode Selection](images/final_mode_selection.png)
+* ![Mode Selection](images/final_mode_selection.png)
 * **Modular Learning (Study Mode)**: Practice questions through modules in Study Mode, which ensure the study process is more achievable.
-![Modules](images/final_modules.png)
-![Modules](images/final_study_mode2.png)
-![Modules](images/final_study_mode3.png)
+* ![Modules](images/final_modules.png)
+* ![Modules](images/final_study_mode2.png)
+* ![Modules](images/final_study_mode3.png)
 * **Mimic Test Feature (Test Mode)**: Simulate a full G1 test in Test Mode, with randomized 40 questions to experience real test conditions.
-![Test Mode](images/final_test_mode.png)
-![Test Mode](images/final_test_mode2.png)
+* ![Test Mode](images/final_test_mode.png)
+* ![Test Mode](images/final_test_mode2.png)
 
 * **Progress Tracking (Test Result)**: Keep track of your incorrect questions which allows users to review their progress.
-![Test Result](images/final_test_result.png)
+* ![Test Result](images/final_test_result.png)
 * **User-Friendly Interface**: Designed for easy navigation and intuitive learning, making preparation accessible for everyone.
 
 ## Installation Instruction[images](images)
@@ -78,17 +78,17 @@ When cloning our program to the downloaded IntelliJ, users may be required to au
 
 ## Usage Guide
 * After locating and running the file named "main", user now can sign up for a personal account using a valid email address. 
-![SignUp](images/fina_sign_up.png)
+* ![SignUp](images/fina_sign_up.png)
 * Then user may choose either study or test mode to aid their study.
-![ModeSelection](images/final_mode_selection.png)
+* ![ModeSelection](images/final_mode_selection.png)
 * Following the instruction for each mode, user can start studying.
-![Modules](images/final_study_mode2.png)
-![Test Mode](images/final_test_mode.png)
+* [Modules](images/final_study_mode2.png)
+* ![Test Mode](images/final_test_mode.png)
 * After complete each module or test, user would get a result summary.
-![Test Result](images/final_test_result.png)
+* ![Test Result](images/final_test_result.png)
 
 * Clicking the "finish" button on the result displaying page would allow user go back to the mode selection page, which allows user to engage again (repeating process with above).
-![Modules](images/final_study_mode3.png)
+* ![Modules](images/final_study_mode3.png)
 
 ## License
 This project is open source licensed under the MIT License, which allows you to freely use, modify, and distribute the code for personal or commercial purposes, provided that you include the original copyright notice.
